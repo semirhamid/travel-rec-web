@@ -1,0 +1,172 @@
+---
+import PlaceSlider from '../common/PlaceSlider.astro';
+const destinations = [
+  {
+    title: 'BRANDENBURG GATE',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Explore the Colosseum',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    image: '/assets/dest1.png',
+  },
+];
+---
+
+<div class="max-w-7xl mx-auto px-6 mt-24 ">
+  <div class="flex flex-col w-full justify-center items-center">
+    <h2 class="text-3xl font-bold flex items-center">
+      Places To
+      <div class="relative ml-2 text-[#FF852E]">
+        Vist
+        <span class="absolute inset-0">
+          <img src="/assets/text.png" alt="" /></span
+        >
+      </div>
+    </h2>
+    <h6>
+      The most exciting destinations, experiences, hidden gems, and traveler
+      faves to check out now.
+    </h6>
+  </div>
+  <div class="mt-12 lg:block hidden">
+    <div class="grid lg:grid-cols-5 items-center gap-4">
+      <!-- First col -->
+      <div
+        class="relative col-span-1 lg:row-span-3 h-[300px] overflow-hidden rounded-lg"
+      >
+        <img
+          src="/assets/latest-main.png"
+          alt="Image 1"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 inset-x-0 leading-tight px-4 py-2 z-[100] text-lg font-bold text-white line-clamp-3"
+        >
+          A Couple's traveler's guide to Los Angeles
+        </div>
+      </div>
+      <!-- Second Col -->
+      <div class="col-span-1 space-y-4">
+        <div class="relative overflow-hidden rounded-lg">
+          <img
+            src="/assets/latest-main.png"
+            alt="Image 2"
+            class="w-full h-48 object-cover rounded-lg"
+          />
+          <div
+            class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-4 z-[100] text-lg font-bold leading-tight text-white"
+          >
+            A Couple's traveler's guide to Los Angeles
+          </div>
+        </div>
+        <div class="relative overflow-hidden rounded-lg">
+          <img
+            src="/assets/latest-main.png"
+            alt="Image 2"
+            class="w-full h-48 object-cover rounded-lg"
+          />
+          <div
+            class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-4 z-[100] text-lg font-bold leading-tight text-white"
+          >
+            Bali beyond the beach
+          </div>
+        </div>
+      </div>
+      <!-- Third Col -->
+      <div
+        class="relative col-span-1 lg:row-span-3 h-[300px] overflow-hidden rounded-lg"
+      >
+        <img
+          src="/assets/latest-main.png"
+          alt="Image 1"
+          class="w-full h-full object-cover"
+        />
+        <div
+          class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+        >
+        </div>
+        <div
+          class="absolute bottom-0 inset-x-0 leading-tight px-4 py-2 z-[100] text-lg font-bold text-white"
+        >
+          A Couple's traveler's guide to Los Angeles
+        </div>
+      </div>
+      <!-- Fourth Col -->
+      <div class="relative col-span-2 flex flex-col gap-4">
+        <div class="grid lg:grid-cols-2 items-center gap-4">
+          <div class="relative col-span-1 rounded-lg overflow-hidden">
+            <img
+              src="/assets/latest-main.png"
+              alt="Image 1"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+            >
+            </div>
+            <div
+              class="absolute bottom-0 inset-x-0 p-4 z-[100] text-lg font-bold line-clamp-3 leading-tight text-white"
+            >
+              Bali beyond the beach
+            </div>
+          </div>
+          <div class="relative col-span-1 rounded-lg overflow-hidden">
+            <img
+              src="/assets/latest-main.png"
+              alt="Image 1"
+              class="w-full h-full object-cover"
+            />
+            <div
+              class="bg-gradient-to-t from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+            >
+            </div>
+            <div
+              class="absolute bottom-0 inset-x-0 p-4 z-[100] text-lg font-bold line-clamp-3 leading-tight text-white"
+            >
+              Bali beyond the beach
+            </div>
+          </div>
+        </div>
+        <div class="relative overflow-hidden rounded-lg">
+          <img
+            src="/assets/latest-main.png"
+            alt="Image 2"
+            class="w-full h-48 object-cover rounded-lg"
+          />
+          <div
+            class="bg-gradient-to-t line-clamp-3 from-black/60 to-transparent h-32 absolute bottom-0 left-0 right-0"
+          >
+          </div>
+          <div
+            class="absolute bottom-0 inset-x-0 p-4 z-[100] text-lg font-bold line-clamp-3 leading-tight text-white"
+          >
+            Bali beyond the beach
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="lg:hidden block">
+    <PlaceSlider slides={destinations} />
+  </div>
+</div>

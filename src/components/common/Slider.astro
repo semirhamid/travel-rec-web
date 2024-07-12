@@ -1,0 +1,207 @@
+---
+import Swiper from 'swiper';
+import 'swiper/css';
+import 'swiper/css/navigation';
+import 'swiper/css/pagination';
+
+const { slides } = Astro.props;
+---
+
+<style>
+  .swiper-pagination-bullet-active {
+    background-color: white;
+  }
+
+  .swiper-pagination {
+    background: #f2d7ff;
+    height: 4px;
+    left: 170px !important;
+    width: calc(100% - 200px) !important;
+    top: 550px !important;
+    border-radius: 2rem;
+  }
+
+  @media screen and (max-width: 768px) {
+    .swiper-pagination {
+      top: 500px !important;
+    }
+  }
+
+  :global(.swiper-pagination-progressbar-fill) {
+    background: #ff9933 !important;
+  }
+
+  .swiper-button-next {
+    top: 400px !important;
+    right: 75px !important;
+  }
+
+  .swiper-button-prev {
+    top: 400px !important;
+    right: 130px !important;
+    left: auto !important;
+  }
+
+  .swiper-button-prev,
+  .swiper-button-next {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    width: 2.5rem;
+    height: 2.5rem;
+  }
+  @media screen and (max-width: 450px) {
+    .swiper-button-next,
+    .swiper-button-prev {
+      top: 370px !important;
+    }
+    .swiper-button-next {
+      left: 60px !important;
+    }
+
+    .swiper-button-prev {
+      left: 5px !important;
+    }
+    .swiper-button-prev svg,
+    .swiper-button-next svg {
+      width: 0.8rem;
+      height: 0.8rem;
+    }
+  }
+
+  .swiper-button-prev svg,
+  .swiper-button-next svg {
+    width: 2rem;
+    height: 2rem;
+  }
+
+  .swiper-button-next:after,
+  .swiper-rtl .swiper-button-prev:after,
+  .swiper-button-prev:after,
+  .swiper-rtl .swiper-button-next:after {
+    content: none !important;
+  }
+
+  /* Add transition for the img element */
+
+  img {
+    transition: opacity 0.5s ease-in-out;
+  }
+
+  .hide-img {
+    opacity: 0;
+  }
+
+  /* Add transition for the text elements */
+  .slide-up {
+    transition:
+      transform 0.5s ease-in-out,
+      opacity 0.5s ease-in-out;
+    /* transform: translateY(50px); */
+    /* opacity: 0; */
+  }
+</style>
+
+<>
+  <section class="container mx-auto pt-6">
+    <div class="swiper sm:h-[450px] h-[420px]">
+      <div class="swiper-wrapper">
+        {
+          slides.map((slide: any) => (
+            <div class="swiper-slide">
+              <div class="max-w-sm rounded overflow-hidden  bg-white">
+                <img
+                  class="w-full"
+                  src={`${slide.image}`}
+                  alt="Brandenburg Gate"
+                />
+                <div class=" py-4">
+                  <div class="font-bold text-lg mb-1">{slide.title}</div>
+                  <div class="flex items-center text-gray-600">
+                    <svg
+                      width="17"
+                      height="20"
+                      viewBox="0 0 17 20"
+                      fill="none"
+                      xmlns="http://www.w3.org/2000/svg"
+                    >
+                      <path
+                        d="M14.3927 2.52505C11.1385 -0.675993 5.86244 -0.675993 2.60828 2.52505C1.83566 3.27988 1.22172 4.18154 0.802564 5.17704C0.383406 6.17253 0.16748 7.24178 0.16748 8.32192C0.16748 9.40207 0.383406 10.4713 0.802564 11.4668C1.22172 12.4623 1.83566 13.364 2.60828 14.1188L8.49994 19.9157L14.3927 14.1188C15.1653 13.364 15.7792 12.4623 16.1984 11.4668C16.6175 10.4713 16.8334 9.40207 16.8334 8.32192C16.8334 7.24178 16.6175 6.17253 16.1984 5.17704C15.7792 4.18154 15.1653 3.27988 14.3927 2.52505ZM8.49994 11.0615C7.80411 11.0615 7.15099 10.7907 6.65828 10.299C6.17052 9.81021 5.89658 9.14787 5.89658 8.45734C5.89658 7.76681 6.17052 7.10448 6.65828 6.61567C7.14994 6.12401 7.80411 5.85317 8.49994 5.85317C9.19578 5.85317 9.84994 6.12401 10.3416 6.61567C10.8294 7.10448 11.1033 7.76681 11.1033 8.45734C11.1033 9.14787 10.8294 9.81021 10.3416 10.299C9.84994 10.7907 9.19578 11.0615 8.49994 11.0615Z"
+                        fill="#FF852E"
+                      />
+                    </svg>
+
+                    <span class="text-[#9EA3B1] ml-1">{slide.location}</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+      <>
+        <div
+          class="swiper-button-next rounded-full border-[3px] border-[#FF852E]"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-right text-[#FF852E]"
+            ><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </div>
+        <div
+          class="swiper-button-prev rounded-full border-[3px] border-[#FF852E] rotate-180"
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            viewBox="0 0 24 24"
+            fill="none"
+            stroke="currentColor"
+            stroke-width="2"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            class="lucide lucide-chevron-right text-[#FF852E]"
+            ><path d="m9 18 6-6-6-6"></path></svg
+          >
+        </div>
+      </>
+      <!-- <div class="swiper-pagination"></div> -->
+    </div>
+  </section>
+</>
+
+<script
+  is:inline
+  src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+<script is:inline>
+  new Swiper('.swiper', {
+    spaceBetween: 20,
+    slidesPerView: 1,
+    effect: 'slide',
+    speed: 800,
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+    pagination: {
+      el: '.swiper-pagination',
+      type: 'progressbar',
+      progressbarColor: '#FF9933',
+    },
+    autoplay: false,
+    breakpoints: {
+      1024: {
+        slidesPerView: 3,
+      },
+      768: {
+        slidesPerView: 2,
+      },
+    },
+  });
+</script>

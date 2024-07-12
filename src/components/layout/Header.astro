@@ -1,0 +1,536 @@
+---
+import { HEADER_URL, LOGO_URL } from '../../constants/url.global';
+// import { BACKEND_URL } from '../../types/global';
+import type { HeaderData } from '../../types/header';
+import api from '../../util/axios';
+
+const fetchHeaderData = async (): Promise<HeaderData | null> => {
+  try {
+    console.log({ HEADER_URL });
+    const response = await api.get(HEADER_URL);
+    console.log({ response });
+    return response.data.data;
+  } catch (error) {
+    console.error('Error fetching header data:', error);
+    return null;
+  }
+};
+
+const fetchLogoData = async () => {
+  try {
+    const response = await api.get(LOGO_URL);
+    const logoData = response.data;
+    return logoData.data.attributes.logo.data.attributes;
+  } catch (error) {
+    console.error('Error fetching logo data:', error);
+  }
+};
+// const data = await fetchHeaderData();
+const BACKEND_URL = '';
+const logoData = {
+  url: '/assets/Frame.png',
+};
+
+const data = {
+  attributes: {
+    header_urls: [
+      {
+        mainlink: {
+          Url_Name: 'Blog',
+        },
+        Child_Links: [],
+      },
+      {
+        mainlink: {
+          Url_Name: 'Travel Insurance',
+        },
+        Child_Links: [
+          {
+            Url_Name: 'Single Trip Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Business Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Adventure Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Backpacker Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Annual Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Travel Insurance for the over 65s',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Travel insurance with medical conditions',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Family Travel Insurance',
+            url_description: '',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+        ],
+      },
+      {
+        mainlink: {
+          Url_Name: 'Destination',
+        },
+        Child_Links: [
+          {
+            Url_Name: 'Africa',
+            url_description: 'Explore exotic Africa More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Asia',
+            url_description: 'Explore exotic Asia More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Australia',
+            url_description: 'Explore exotic Australia More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'Europe',
+            url_description: 'Explore exotic Europe More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'North America',
+            url_description: 'Explore exotic North America More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'UK',
+            url_description: 'Explore exotic UK More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+          {
+            Url_Name: 'World Wide',
+            url_description: 'Explore More',
+            link_image: {
+              data: {
+                attributes: {
+                  url: '/assets/Frame.png',
+                },
+              },
+            },
+          },
+        ],
+      },
+    ],
+  },
+};
+
+// const logoData = await fetchLogoData();
+---
+
+<header class="bg-white px-5 z-50">
+  <div
+    class="max-w-7xl flex justify-between items-center mx-auto z-50 nav-menu-parent bg-white"
+  >
+    <div class="flex py-3 max-h-16">
+      <img class="w-8 mr-2" src={BACKEND_URL + logoData.url} alt="Logo" />
+      <p class="max-w-9 text-lg leading-5 font-extrabold text-[#2E3749]">
+        TRAVEL Rec
+      </p>
+    </div>
+    {/* Search bar */}
+    <div class="relative my-3">
+      <div class="lg:absolute items-center flex h-9 inset-y-0 start-0 ps-3">
+        <svg
+          width="18"
+          height="18"
+          viewBox="0 0 13 13"
+          fill="none"
+          xmlns="http://www.w3.org/2000/svg"
+        >
+          <path
+            class="fill-[#010031] lg:fill-[#D9D9D9]"
+            d="M5.21355 1.60389C4.25621 1.60389 3.33808 1.98419 2.66114 2.66114C1.98419 3.33808 1.60389 4.25621 1.60389 5.21355C1.60389 6.1709 1.98419 7.08903 2.66114 7.76597C3.33808 8.44291 4.25621 8.82322 5.21355 8.82322C6.1709 8.82322 7.08903 8.44291 7.76597 7.76597C8.44291 7.08903 8.82322 6.1709 8.82322 5.21355C8.82322 4.25621 8.44291 3.33808 7.76597 2.66114C7.08903 1.98419 6.1709 1.60389 5.21355 1.60389ZM9.42403 8.28979L13 11.8658L11.8658 13L8.28979 9.42403C7.22943 10.1987 5.9158 10.5447 4.61139 10.393C3.30699 10.2412 2.10789 9.60283 1.25372 8.60539C0.39954 7.60796 -0.0467999 6.32493 0.00388899 5.01271C0.0545779 3.70048 0.598562 2.45571 1.52714 1.52714C2.45571 0.598562 3.70048 0.0545779 5.01271 0.00388899C6.32493 -0.0467999 7.60796 0.39954 8.60539 1.25372C9.60283 2.10789 10.2412 3.30699 10.393 4.61139C10.5447 5.9158 10.1987 7.22943 9.42403 8.28979Z"
+          ></path>
+        </svg>
+        <div id="hamburger-menu" class="lg:hidden">
+          <button class="text-[#2E3749] mx-5">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-6 w-6"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                stroke-width="2"
+                d="M4 6h16M4 12h16m-7 6h7"></path>
+            </svg>
+          </button>
+        </div>
+      </div>
+
+      <input
+        type="text"
+        id="voice-search"
+        class="bg-white hidden lg:block border h-9 font-medium border-gray-300 text-[#D9D9D9] rounded-3xl w-80 text-sm focus:ring-[#FF852E] outline-[#FF852E] focus:border-[#FF852E] ps-10 p-2.5"
+        placeholder="Search"
+        required
+      />
+      {/* Hamburger menu icon */}
+    </div>
+    {/* Header links */}
+    <nav class="justify-between hidden lg:flex lg:h-16">
+      {
+        data?.attributes.header_urls.map((headerUrl) => (
+          <div class="menu">
+            <button class="text-[#2E3749] font-semibold group flex items-center gap-2 h-full px-5 hover:text-[#FF852E] menu__link">
+              {headerUrl.mainlink.Url_Name}
+              {headerUrl.Child_Links.length ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="16"
+                  height="16"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevron-down transition-transform duration-200 transform origin-center group-hover:rotate-180"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              ) : null}
+            </button>
+            <ul class="mega-menu grid-cols-4 absolute hidden top-14 w-full left-0 mt-2 bg-white border border-gray-200 shadow-lg z-[10]">
+              {headerUrl.Child_Links.map((childLink) => (
+                <li class="py-10 px-5 flex border-l-2 hover:bg-gray-100 cursor-pointer borde">
+                  {childLink.link_image.data && (
+                    <div class="p-2 w-16 h-16 rounded-full flex items-center justify-center mr-3">
+                      <img
+                        src={
+                          BACKEND_URL + childLink.link_image.data.attributes.url
+                        }
+                        alt={childLink.Url_Name}
+                        class="w-full"
+                      />
+                    </div>
+                  )}
+                  <div class="inline-block">
+                    <div class="flex flex-col justify-center my-auto">
+                      <p class="text-gray-900">{childLink.Url_Name}</p>
+                      <p class="text-gray-500 text-sm">
+                        {childLink.url_description}
+                      </p>
+                    </div>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </nav>
+    {/* Sign-in button */}
+    <div class="hidden lg:flex lg:items-center lg:gap-4">
+      <button
+        class="text-[#2E3749] text-sm bg-white border-2 font-semibold border-[#d9e3f1] shadow-[#d9e3f1] rounded-3xl px-3 py-1 gap-1 flex items-center"
+      >
+        <p>Sign In</p>
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right"
+          ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+        >
+      </button>
+      <button
+        class="bg-[#2E3749] text-white rounded-3xl px-3 py-1 flex justify-center items-center gap-2 hover:gap-4"
+      >
+        Get Quote
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="14"
+          height="14"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right"
+          ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+        >
+      </button>
+    </div>
+  </div>
+  <!-- mobile -->
+  <div
+    id="mobile-nav"
+    class="lg:hidden overflow-scroll px-5 hidden fixed bottom-0 top-0 pt-24 z-10 right-0 left-0 flex-col justify-between bg-white"
+  >
+    <div class="menus">
+      {
+        data?.attributes.header_urls.map((headerUrl, index) => (
+          <div class="menu">
+            <button
+              class="text-[#2E3749] border-b group py-3 w-full flex justify-between items-center  text-left font-semibold h-full hover:text-[#FF852E] menu__link"
+              data-id={`menu-${index}`}
+            >
+              {headerUrl.mainlink.Url_Name}
+              {headerUrl.Child_Links.length ? (
+                <svg
+                  xmlns="http://www.w3.org/2000/svg"
+                  width="24"
+                  height="24"
+                  viewBox="0 0 24 24"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                  stroke-linecap="round"
+                  stroke-linejoin="round"
+                  class="lucide lucide-chevron-down transition-transform duration-300 transform origin-center"
+                >
+                  <path d="m6 9 6 6 6-6" />
+                </svg>
+              ) : null}
+            </button>
+            <ul
+              class=" hidden mt-2 transition-transform duration-300"
+              id={`menu-${index}`}
+            >
+              {headerUrl.Child_Links.map((childLink, childIndex) => (
+                <li class="py-5 px-5 cursor-pointer hover:bg-slate-300/20 flex">
+                  {childLink.link_image.data && (
+                    <div class="w-10 h-10 rounded-full flex items-center justify-center mr-3">
+                      <img
+                        src={
+                          BACKEND_URL + childLink.link_image.data.attributes.url
+                        }
+                        alt={childLink.Url_Name}
+                        class="w-full"
+                      />
+                    </div>
+                  )}
+                  <div class="inline-block">
+                    <p class="text-gray-900">{childLink.Url_Name}</p>
+                    <p class="text-gray-500 text-sm">
+                      {childLink.url_description}
+                    </p>
+                  </div>
+                </li>
+              ))}
+            </ul>
+          </div>
+        ))
+      }
+    </div>
+    <div class="my-5 space-y-2">
+      <button
+        class="text-[#2E3749] bg-white border-4 font-semibold border-[#d9e3f1] shadow-[#d9e3f1] rounded-3xl px-5 py-2 w-full flex justify-center items-center gap-2 hover:gap-4"
+      >
+        Sign In
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right"
+          ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+        >
+      </button>
+      <button
+        class="bg-[#2E3749] text-white font-semibold rounded-3xl px-5 py-2 w-full flex justify-center items-center gap-2 hover:gap-4"
+      >
+        Get Quote
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          width="18"
+          height="18"
+          viewBox="0 0 24 24"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          class="lucide lucide-arrow-right"
+          ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+        >
+      </button>
+    </div>
+  </div>
+</header>
+
+<style>
+  .menu:hover .mega-menu {
+    display: grid;
+  }
+  .rotate-180 {
+    transform: rotate(180deg);
+  }
+  .nav--open #mobile-nav {
+    display: flex;
+  }
+
+  .nav--open .nav-menu-parent {
+    position: fixed;
+    left: 20px;
+    right: 20px;
+    top: 0;
+  }
+
+  .mega-menu {
+    opacity: 0;
+    transform: translateY(-200px);
+    transition:
+      opacity 0.3s ease,
+      transform 0.3s ease;
+  }
+
+  .menu:hover .mega-menu {
+    opacity: 1;
+    transform: translateY(0);
+    display: grid;
+  }
+</style>
+
+<script>
+  document.addEventListener('DOMContentLoaded', () => {
+    const mobileNav = document.querySelector('header');
+    const hamburgerMenu = document.getElementById('hamburger-menu');
+
+    if (mobileNav && hamburgerMenu) {
+      hamburgerMenu.addEventListener('click', () => {
+        mobileNav.classList.toggle('nav--open');
+      });
+    } else {
+      console.log('Element(s) not found:', { mobileNav, hamburgerMenu });
+    }
+
+    const menuLinks = document.querySelectorAll('.menu__link');
+
+    menuLinks.forEach((link) => {
+      link.addEventListener('click', function () {
+        const menuId = link.getAttribute('data-id');
+        const megaMenu = document.getElementById(menuId ?? '');
+        const svgIcon = link.querySelector('svg');
+
+        if (megaMenu) megaMenu.classList.toggle('hidden');
+        if (svgIcon) svgIcon.classList.toggle('rotate-180');
+      });
+    });
+  });
+</script>

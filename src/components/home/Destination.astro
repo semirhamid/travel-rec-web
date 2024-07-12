@@ -1,0 +1,94 @@
+---
+import Slider from '../common/Slider.astro';
+const destinations = [
+  {
+    title: 'BRANDENBURG GATE',
+    location: 'Berlin',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Explore the Colosseum',
+    location: 'Rome',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    location: 'Paris',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    location: 'Paris',
+    image: '/assets/dest1.png',
+  },
+];
+const categories = [
+  {
+    name: 'Europe',
+    link: 'path/to/europe',
+  },
+  {
+    name: 'Asia',
+    link: 'path/to/asia',
+  },
+  {
+    name: 'Africa',
+    link: 'path/to/africa',
+  },
+  {
+    name: 'Latin America',
+    link: 'path/to/latin_america',
+  },
+];
+---
+
+<div class="mx-auto max-w-7xl border-t py-4 px-6">
+  <div
+    class="flex justify-between overflow-x-auto w-full items-center no-scrollbar"
+  >
+    <div
+      class="flex flex-nowrap justify-start md:justify-center md:gap-6 gap-2"
+    >
+      {
+        categories?.map((category: any) => {
+          return (
+            <a
+              href={category?.url}
+              class={`text-sm py-1 px-4 rounded-full  whitespace-nowrap capitalize border-2 text-[#9B9B9B]`}
+              data-category={category?.slug}
+            >
+              {category?.name}
+            </a>
+          );
+        })
+      }
+    </div>
+    <a
+      href={'/all-destination'}
+      class={`text-sm py-2 px-4 hidden sm:block underline font-semibold`}
+    >
+      View All Destinations
+    </a>
+  </div>
+  <Slider slides={destinations} />
+</div>
+<div
+  class="mx-auto pb-4 border-b max-w-7xl px-6 lg:flex lg:items-start lg:justify-between"
+>
+  <h6 class="text-semibold text-xl text-[#5B6073]">Hear our stories</h6>
+  <h2
+    class="md:text-3xl text-xl font-semibold tracking-tight text-[#121217] sm:max-w-[400px]"
+  >
+    Travel Stories to inspire your next trip
+  </h2>
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+</style>

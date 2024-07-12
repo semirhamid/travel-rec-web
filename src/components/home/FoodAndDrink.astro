@@ -1,0 +1,94 @@
+<div class="max-w-7xl mx-auto px-6">
+  <div
+    class="flex flex-col w-full justify-center items-center text-center md:gap-4 gap-2"
+  >
+    <h2 class="lg:text-3xl md:text-2xl text-xl font-bold flex items-center">
+      Food And
+      <div class="relative ml-2 text-[#FF852E]">
+        Drink
+        <span class="absolute inset-0">
+          <img src="/assets/text.png" alt="" /></span
+        >
+      </div>
+    </h2>
+    <h6>
+      Dig into the best restaurants and bars, street food, and culinary hotspots
+      around the world. Who's hungry?
+    </h6>
+  </div>
+
+  <div class="mt-8">
+    <!-- Main Featured Article -->
+    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+      <div class="md:col-span-2 relative md:h-[72vh]">
+        <img
+          src="/assets/food-main.png"
+          alt="10 dishes to try in Paris"
+          class="w-full h-full object-cover rounded-lg"
+        />
+        <div
+          class="absolute inset-0 bg-black bg-opacity-20 rounded-lg flex items-end p-4"
+        >
+          <h2 class="text-white text-2xl font-bold">
+            10 dishes to try in Paris
+          </h2>
+        </div>
+      </div>
+      <div class="flex-col space-y-4 h-[70vh] hidden md:flex">
+        <div class="relative flex-1 h-1/2">
+          <img
+            src="/assets/food-side.png"
+            alt="3 best areas to stay in Kauai"
+            class="w-full h-full object-cover rounded-lg"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-20 rounded-lg flex items-end p-4"
+          >
+            <h3 class="text-white text-2xl font-semibold">
+              3 best areas to stay in Kauai
+            </h3>
+          </div>
+        </div>
+        <div class="relative flex-1 h-1/2">
+          <img
+            src="/assets/food-side2.png"
+            alt="8 best ruin bars in Budapest"
+            class="w-full object-cover h-full rounded-lg"
+          />
+          <div
+            class="absolute inset-0 bg-black bg-opacity-10 rounded-lg flex items-end p-4"
+          >
+            <h3 class="text-white text-2xl font-semibold">
+              8 best ruin bars in Budapest
+            </h3>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Grid of Smaller Articles -->
+    <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4 mt-6">
+      {
+        Array(4)
+          .fill(0)
+          .map((food) => {
+            return (
+              <div class="bg-white rounded-lg flex gap-4">
+                <img
+                  src="/assets/food-main.png"
+                  class="w-20 h-20 rounded aspect-square object-cover"
+                  alt=""
+                />
+                <div class="flex flex-col">
+                  <h3 class="font-bold line-clamp-3 leading-tight">
+                    Where Island of Hawaii’s top chefs go on their days off
+                  </h3>
+                  <p class="text-gray-600 text-sm">May 30, 2024 • 5 min read</p>
+                </div>
+              </div>
+            );
+          })
+      }
+    </div>
+  </div>
+</div>
