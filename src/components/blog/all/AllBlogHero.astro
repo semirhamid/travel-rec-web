@@ -1,0 +1,54 @@
+---
+const icons = [
+  {
+    icon: '/icons/facebook.svg',
+    link: 'https://www.facebook.com',
+  },
+  { icon: '/icons/pinterest.svg', link: 'https://www.pinterest.com' },
+  { icon: '/icons/instagram.svg', link: 'https://www.instagram.com' },
+  { icon: '/icons/tiktok.svg', link: 'https://www.tiktok.com' },
+];
+---
+
+<section class="relative bg-[#FBF5EC] md:h-[400px]">
+  <div class="mx-auto max-w-7xl lg:grid lg:grid-cols-12 lg:gap-x-8 lg:px-8">
+    <div class="px-6 col-span-7 sm:pt-20 sm:pb-24 pt-10 z-[1]">
+      <div class="mx-auto max-w-5xl lg:mx-0">
+        <h1 class="text-4xl font-bold tracking-tight text-gray-900 sm:text-6xl">
+          All Articles
+        </h1>
+        <p class="mt-6 max-w-[500px] leading-tight text-[#2E3749]">
+          See what our travel community is up to
+        </p>
+      </div>
+      <div class="flex space-x-4 mt-6">
+        {
+          icons.map((item, index) => (
+            <a
+              href={item.link}
+              class="flex items-center justify-center w-9 h-9 rounded-full  text-white"
+            >
+              <img src={item?.icon} alt="" />
+            </a>
+          ))
+        }
+      </div>
+    </div>
+    <div class="col-span-5 relative h-[300px] md:h-auto">
+      <div class="bottom-0 right-0 absolute">
+        <img
+          class="object-contain aspect-[3/2] w-full h-full"
+          src="/assets/computer.png"
+          alt=""
+        />
+      </div>
+    </div>
+  </div>
+  <div class=" left-1/2 transform -translate-x-1/2 absolute top-1/2 -translate-y-1/2">
+    <img
+      class="object-contain aspect-[3/2] w-full h-full"
+      src="/assets/bird.png"
+      alt=""
+    />
+  </div>
+</section>

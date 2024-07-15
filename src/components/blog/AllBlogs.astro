@@ -1,0 +1,94 @@
+---
+import BlogCard from './BlogCard.astro';
+const blogs = [
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+  {
+    image: '/assets/latest-main.png',
+    category: 'Destinations',
+    published: '1 May 2024',
+    title: '10 incredible places to visit in May around the world',
+    description:
+      "From wildflowers to icebergs, we're embracing the wonders of late spring.",
+    link: '/post/1',
+  },
+];
+---
+
+<div class="mx-auto max-w-7xl py-4 px-6">
+  <div class="flex justify-between text-[#393938] border-b py-4">
+    <h3 class="font-bold lg:text-3xl md:text-2xl">Explore More</h3>
+    <a
+      href="/blog/all"
+      class="px-4 rounded-full flex items-center gap-1 border text-sm"
+    >
+      <svg
+        xmlns="http://www.w3.org/2000/svg"
+        width="16"
+        height="16"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        stroke-width="2"
+        stroke-linecap="round"
+        stroke-linejoin="round"
+        class="lucide lucide-globe"
+        ><circle cx="12" cy="12" r="10"></circle><path
+          d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"></path><path
+          d="M2 12h20"></path></svg
+      >
+      All Articles
+    </a>
+  </div>
+
+  <div class="grid lg:grid-cols-3 md:grid-2 grid-cols-1 md:gap-4 gap-2 mt-6">
+    {
+      blogs?.map((blog) => {
+        return <BlogCard {...blog} />;
+      })
+    }
+  </div>
+</div>

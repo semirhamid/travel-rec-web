@@ -1,0 +1,76 @@
+---
+import InqueryForm from './InqueryForm.astro';
+---
+
+<div class="bg-[#FBF5EC] md:h-[90vh] lg:my-16 md:my-10 my-6 relative">
+  <img
+    class="absolute inset-x-0 md:-bottom-96 -bottom-32 z-[0]"
+    src="/assets/bridge.png"
+    alt=""
+  />
+  <div
+    class="flex items-start flex-col gap-10 md:gap-2 md:flex-row md:py-20 py-10 justify-between z-[100] max-w-5xl px-6 sm:px-0 mx-auto"
+  >
+    <!-- Left Section -->
+    <div class="flex-1 mt-16 relative">
+      <div class="absolute top-0 left-1/2 md:block hidden">
+        <img
+          src="/assets/bird.png"
+          alt=""
+          class="h-full w-full object-contain"
+        />
+      </div>
+      <div class="absolute -bottom-44 left-10 w-32 md:block hidden">
+        <img
+          src="/assets/bird22.png"
+          alt=""
+          class="h-full w-full object-contain"
+        />
+      </div>
+      <h2 class="text-2xl md:text-3xl font-extrabold text-[#010231] mb-4">
+        Get going in <br />
+        <span class="text-orange-500">3 simple steps</span>
+      </h2>
+      <ol class="space-y-4 md:text-lg font-semibold">
+        <li class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 grid place-content-center rounded-full bg-[#FF852E] text-white"
+          >
+            1
+          </div>Fill out the form
+        </li>
+        <li class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 grid place-content-center rounded-full bg-[#FF852E] text-white"
+          >
+            2
+          </div> Choose the plan that’s right for you
+        </li>
+        <li class="flex items-center gap-2">
+          <div
+            class="w-6 h-6 grid place-content-center rounded-full bg-[#FF852E] text-white"
+          >
+            3
+          </div> Receive your documents in seconds
+        </li>
+      </ol>
+    </div>
+    <!-- Right Section -->
+    <div class="flex-1 flex md:justify-between">
+      <div
+        class="bg-[#FEFFF3] relative md:w-3/4 w-full p-6 rounded-3xl border border-[#B5B5A7]"
+      >
+        <div
+          class="absolute -top-8 left-1/2 transform -translate-x-1/2 hidden md:block"
+        >
+          <img class="w-10 object-contain" src="/assets/bird2.png" alt="" />
+        </div>
+        <h3 class="text-sm mb-4">
+          Please fill out the form below and we’ll get back to you as soon as
+          possible.
+        </h3>
+        <InqueryForm />
+      </div>
+    </div>
+  </div>
+</div>

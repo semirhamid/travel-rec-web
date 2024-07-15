@@ -1,0 +1,25 @@
+---
+// Card.astro
+export interface CardProps {
+  image: string;
+  title: string;
+  link: string;
+  category: string;
+  published: string;
+}
+
+const { image, title, link, category, published } = Astro.props as CardProps;
+---
+
+<div class="relative w-full overflow-hidden">
+  <img src={image} alt={title} class="w-full h-64 object-cover" />
+  <div class="h-3 w-full bg-[#1DC4BC]"></div>
+  <div class="p-4 text-black">
+    <div class="flex items-center justify-between md:text-sm text-xs py-2">
+      <h3 class="uppercase font-bold text-[#1DC4BC]">{category}</h3>
+      <h4>{published}</h4>
+    </div>
+    <h2 class="lg:text-xl md:text-lg font-semibold mb-6">{title}</h2>
+    <a href={link} class="underline text-xs md:text-sm text-[#1DC4BC]">KEEP READING</a>
+  </div>
+</div>

@@ -1,0 +1,91 @@
+---
+import Slider from '../common/Slider.astro';
+import Breadcrumb from '../common/BreadCrumb.astro';
+const destinations = [
+  {
+    title: 'BRANDENBURG GATE',
+    location: 'Berlin',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Explore the Colosseum',
+    location: 'Rome',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    location: 'Paris',
+    image: '/assets/dest1.png',
+  },
+  {
+    title: 'Eiffel Tower',
+    location: 'Paris',
+    image: '/assets/dest1.png',
+  },
+];
+const categories = [
+  {
+    name: 'Europe',
+    link: 'path/to/europe',
+  },
+  {
+    name: 'Asia',
+    link: 'path/to/asia',
+  },
+  {
+    name: 'Africa',
+    link: 'path/to/africa',
+  },
+  {
+    name: 'Latin America',
+    link: 'path/to/latin_america',
+  },
+];
+const breadcrumbLinks = [
+  { label: 'Home', url: '/' },
+  { label: 'Blog', url: '/blog' },
+];
+---
+
+<div class="mx-auto max-w-7xl py-4 px-6">
+  <Breadcrumb links={breadcrumbLinks} />
+  <h1 class="text-3xl font-extrabold text-[#393938] mb-2 hidden md:block">
+    Explore by Destination
+  </h1>
+  <div
+    class="flex justify-between overflow-x-auto w-full items-center no-scrollbar"
+  >
+    <div class="flex flex-nowrap justify-start md:justify-center gap-2">
+      {
+        categories?.map((category: any) => {
+          return (
+            <a
+              href={category?.url}
+              class={`text-sm py-1 px-4 rounded-full  whitespace-nowrap capitalize border-2 text-[#9B9B9B]`}
+              data-category={category?.slug}
+            >
+              {category?.name}
+            </a>
+          );
+        })
+      }
+    </div>
+    <a
+      href={'/destination'}
+      class={`text-sm py-2 px-4 hidden sm:block underline font-semibold`}
+    >
+      View All Destinations
+    </a>
+  </div>
+  <Slider slides={destinations} />
+</div>
+
+<style>
+  .no-scrollbar::-webkit-scrollbar {
+    width: 0px;
+  }
+
+  .no-scrollbar {
+    scrollbar-width: none;
+  }
+</style>

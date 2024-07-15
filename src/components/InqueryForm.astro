@@ -1,0 +1,83 @@
+<form class="space-y-4">
+  <div>
+    <label for="policy" class="block text-sm font-medium text-gray-700"
+      >Choose a policy</label
+    >
+    <select
+      id="policy"
+      name="policy"
+      class="mt-1 block w-full py-2 px-4 border border-gray-300 bg-white rounded-full shadow-sm focus:outline-none focus:ring-[#FF852E] focus:border-[#FF852E] sm:text-sm"
+    >
+      <option>Choose a policy</option>
+    </select>
+  </div>
+  <div>
+    <label for="destination" class="block text-sm font-medium text-gray-700"
+      >Destination</label
+    >
+    <input
+      type="text"
+      id="destination"
+      name="destination"
+      class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-[#FF852E] focus:border-[#FF852E] sm:text-sm"
+      placeholder="Destination"
+    />
+  </div>
+  <div class="flex space-x-4">
+    <div class="flex-1">
+      <label for="date-from" class="block text-sm font-medium text-gray-700"
+        >Date From</label
+      >
+      <input
+        type="text"
+        id="date-from"
+        name="date-from"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-[#FF852E] focus:border-[#FF852E] sm:text-sm"
+        placeholder="DD/MM/YYYY"
+      />
+    </div>
+    <div class="flex-1">
+      <label for="date-to" class="block text-sm font-medium text-gray-700"
+        >Date To</label
+      >
+      <input
+        type="text"
+        id="date-to"
+        name="date-to"
+        class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-[#FF852E] focus:border-[#FF852E] sm:text-sm"
+        placeholder="DD/MM/YYYY"
+      />
+    </div>
+  </div>
+  <div>
+    <label for="mode" class="block text-sm font-medium text-gray-700"
+      >Mode</label
+    >
+    <input
+      type="text"
+      id="mode"
+      name="mode"
+      class="mt-1 block w-full py-2 px-3 border border-gray-300 rounded-full shadow-sm focus:outline-none focus:ring-[#FF852E] focus:border-[#FF852E] sm:text-sm"
+      placeholder="Mode"
+    />
+  </div>
+
+  <button
+    class="bg-[#010231] text-white rounded-3xl text-sm px-3 py-2 flex justify-center items-center gap-2 hover:gap-4"
+  >
+    Send Inquiry
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      width="14"
+      height="14"
+      viewBox="0 0 24 24"
+      fill="none"
+      stroke="currentColor"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
+      class="lucide lucide-arrow-right"
+      ><path d="M5 12h14"></path><path d="m12 5 7 7-7 7"></path></svg
+    >
+  </button>
+</form>

@@ -1,0 +1,76 @@
+---
+// Pagination.astro
+
+interface Props {
+  currentPage: number;
+  totalPages: number;
+  onPageChange?: (page: number) => void;
+}
+
+const { currentPage, totalPages, onPageChange } = Astro.props;
+
+const getPagination = (currentPage: number, totalPages: number) => {
+  const pages = [];
+  if (totalPages <= 5) {
+    // Less than or equal to 5 total pages, display all
+    for (let i = 1; i <= totalPages; i++) {
+      pages.push(i);
+    }
+  } else {
+    if (currentPage <= 3) {
+      // Display first 3 pages and last page
+      pages.push(1, 2, 3, '...', totalPages);
+    } else if (currentPage > totalPages - 3) {
+      // Display first page and last 3 pages
+      pages.push(1, '...', totalPages - 2, totalPages - 1, totalPages);
+    } else {
+      // Display first page, current page +/- 1, and last page
+      pages.push(
+        1,
+        '...',
+        currentPage - 1,
+        currentPage,
+        currentPage + 1,
+        '...',
+        totalPages
+      );
+    }
+  }
+  return pages;
+};
+
+const pages = getPagination(currentPage, totalPages);
+---
+
+<div class="flex justify-center items-center space-x-2">
+  <!-- Previous Button -->
+  <button
+    class="w-8 h-8 border rounded-full disabled:opacity-50"
+    disabled={currentPage === 1}
+  >
+    &larr;
+  </button>
+
+  <!-- Page Numbers -->
+  {
+    pages.map((page) =>
+      page === '...' ? (
+        <span class="px-4 py-2">...</span>
+      ) : (
+        <button
+          class={`w-8 h-8 border rounded-full ${page === currentPage ? 'bg-gray-300' : ''}`}
+        >
+          {page}
+        </button>
+      )
+    )
+  }
+
+  <!-- Next Button -->
+  <button
+    class="w-8 h-8 border rounded-full disabled:opacity-50"
+    disabled={currentPage === totalPages}
+  >
+    &rarr;
+  </button>
+</div>
