@@ -1,0 +1,36 @@
+---
+import type { GetStaticPaths } from "astro";
+import { type BlogResponseData } from "../../components/destination/blogTypes";
+import api from "../../util/axios";
+import Layout from '../../layouts/Layout.astro';
+import DestinationHero from '../../components/destination/DestinationHero.astro';
+import AllDestination from '../../components/destination/AllDestination.astro';
+import DestinationFooter from '../../components/destination/DestinationFooter.astro';
+
+export const getStaticPaths = (async () => {
+  const fetchBlogs = async (): Promise<BlogResponseData | null> => {
+  try {
+    const page = Astro.url.searchParams.get('page') ?? 1
+    const response = await api.get(`/api/blogs?pagination[page]=${page}&pagination[pageSize]=9&populate=*`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return null;
+  }
+};
+const data = await fetchBlogs()
+const totalItems = data?.meta.pagination.total ?? 50;
+const pageSize = data?.meta.pagination.pageSize ?? 9;
+const totalPages = Math.ceil(totalItems / pageSize) || 1;
+const pages = Array.from({ length: totalPages }, (_, i) => i + 1);
+  return pages.map((page)=>{
+    return { params: { page: page.toString() } }
+  })
+}) satisfies GetStaticPaths;
+---
+
+<Layout title="Welcome to Astro.">
+  <DestinationHero />
+  <AllDestination />
+  <DestinationFooter />
+</Layout>

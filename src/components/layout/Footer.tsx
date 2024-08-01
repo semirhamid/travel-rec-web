@@ -26,6 +26,7 @@ const logoData = await fetchLogoData();
 
 export default function Footer() {
   if (!data) {
+    console.log(data);
     return <div>Loading...</div>;
   }
 

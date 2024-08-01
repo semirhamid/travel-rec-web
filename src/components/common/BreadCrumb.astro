@@ -13,16 +13,16 @@ const { links } = Astro.props as BreadcrumbProps;
 ---
 
 <nav aria-label="breadcrumb" class="md:my-6 my-4">
-  <ul class="flex space-x-2">
+  <ul class="flex">
     {
       links.map((link, index) => (
         <li class="flex items-center">
           {index < links.length - 1 ? (
             <>
-              <a href={link.url} class="text-gray-500 hover:text-orange-500">
+              <a href={link.url} class="text-[#2E3749] text-lg font-medium hover:text-orange-primary">
                 {link.label}
               </a>
-              <span class="mx-2 text-gray-400">
+              <span class="text-[#2E3749] mx-auto">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   width="20"
@@ -40,7 +40,7 @@ const { links } = Astro.props as BreadcrumbProps;
               </span>
             </>
           ) : (
-            <span class="text-orange-500">{link.label}</span>
+            <span class="text-orange-primary font-medium text-lg">{link.label}</span>
           )}
         </li>
       ))

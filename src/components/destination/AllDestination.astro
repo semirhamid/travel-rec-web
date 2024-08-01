@@ -1,0 +1,100 @@
+---
+import BreadCrumb from '../common/BreadCrumb.astro';
+import Pagination from '../common/Pagination.astro';
+import FilterSort from './FilterSort.astro';
+import { BACKEND_URL } from '../../types/global';
+import InqueryForm from '../InqueryForm.astro';
+import api from '../../util/axios';
+import type { BlogResponseData } from './blogTypes';
+
+const breadcrumbLinks = [
+  { label: 'Home', url: '/' },
+  { label: 'Destination', url: '/destination' },
+];
+
+const {page } = Astro.params;
+
+const fetchBlogs = async (): Promise<BlogResponseData | null> => {
+  try {
+    const pageNumber = page ?? Astro.url.searchParams.get('page') ?? 1
+    const response = await api.get(`/api/blogs?pagination[page]=${pageNumber}&pagination[pageSize]=9&populate=*`);
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching blog data:', error);
+    return null;
+  }
+};
+
+
+const data = await fetchBlogs();
+console.log("Fetched data:", data);
+
+const totalItems = data?.meta.pagination.total ?? 50;
+const pageSize = data?.meta.pagination.pageSize ?? 10;
+const totalPages = Math.ceil(totalItems / pageSize) || 1;
+
+let filterOptions = ['All types', 'Type 1', 'Type 2', 'Type 3'];
+let sortOptions = [
+  'Most Popular',
+  'Least Popular',
+  'Highest Rated',
+  'Lowest Rated',
+];
+
+let selectedFilter = 'All types';
+let selectedSort = 'Most Popular';
+---
+
+<div class="mx-auto max-w-7xl py-4 px-6">
+  <BreadCrumb links={breadcrumbLinks} />
+  <div class="grid lg:grid-cols-12 gap-16">
+    <div class="lg:col-span-8">
+      <FilterSort
+        filterOptions={filterOptions}
+        sortOptions={sortOptions}
+        selectedFilter={selectedFilter}
+        selectedSort={selectedSort}
+      />
+      <div class="mt-6 md:mt-12 grid md:grid-cols-3 sm:grid-cols-2 grid-cols-1 gap-4 md:gap-x-9 md:gap-y-10">
+        {
+          data ? data.data.map((article) => (
+            <div class="w-full">
+              <div>
+                <img
+                  class="h-60 rounded-lg object-cover w-full"
+                  src={`${BACKEND_URL}${article.attributes.FeaturedImage.data?.attributes.url}` || '/assets/latest-main.png'}
+                  alt={article.attributes.City || "Article Image"}
+                />
+              </div>
+              <div>
+                <h3 class="text-[#5B6073] font-medium mt-4">{article.attributes.Continent || 'No Category'}</h3>
+                <h2 class="text-black font-medium text-2xl">{article.attributes.City || 'No Title'}</h2>
+              </div>
+            </div>
+          )) : (
+            <p>No blogs available.</p>
+          )
+        }
+      </div>
+      <div class="my-8">
+        <Pagination currentPage={data?.meta.pagination.page ?? 1} totalPages={totalPages} url='/destination' />
+      </div>
+    </div>
+    <div class="lg:col-span-4">
+      <div
+        class="bg-[#FEFFF3] relative w-full p-6 rounded-3xl border border-[#B5B5A7]"
+      >
+        <div
+          class="absolute -top-8 left-1/2 transform -translate-x-1/2 hidden md:block"
+        >
+          <img class="w-10 object-contain" src="/assets/bird2.png" alt="" />
+        </div>
+        <h3 class="text-sm mb-4">
+          Please fill out the form below and we’ll get back to you as soon as
+          possible.
+        </h3>
+        <InqueryForm />
+      </div>
+    </div>
+  </div>
+</div>

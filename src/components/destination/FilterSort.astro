@@ -1,0 +1,58 @@
+---
+// FilterSort.astro
+
+interface Props {
+  filterOptions: string[];
+  sortOptions: string[];
+  selectedFilter: string;
+  selectedSort: string;
+  onFilterChange?: (filter: string) => void;
+  onSortChange?: (sort: string) => void;
+}
+
+const {
+  filterOptions,
+  sortOptions,
+  selectedFilter,
+  selectedSort,
+  onFilterChange,
+  onSortChange,
+} = Astro.props;
+---
+
+<div class="flex justify-between gap-4 mt-4 w-full md:flex-row flex-col">
+  <!-- Filter by Type of Place -->
+  <div class="flex flex-col items-start flex-1">
+    <label class="mb-2 text-xs font-bold text-darkblue-accent"
+      >FILTER BY TYPE OF PLACE</label
+    >
+    <select
+      class="px-4 py-2 border-[#7C7C7C] border-2  text-[#010231] custom-select rounded-full h-14 focus:outline-none focus:ring-2 focus:ring-gray-300 w-full"
+      value={selectedFilter}
+    >
+      {filterOptions.map((option) => <option value={option}>{option}</option>)}
+    </select>
+  </div>
+
+  <!-- Sort Places By -->
+  <div class="flex flex-col items-start flex-1">
+    <label class="mb-2 text-xs font-bold text-darkblue-accent">SORT PLACES BY</label>
+    <select
+      class="px-4 py-2 border-[#7C7C7C] text-[#010231] border-2 custom-select w-full rounded-full h-14 focus:outline-none focus:ring-2 focus:ring-gray-300"
+      value={selectedSort}
+    >
+      {sortOptions.map((option) => <option value={option}>{option}</option>)}
+    </select>
+  </div>
+</div>
+<style>
+  .custom-select {
+    cursor: pointer;
+  appearance: none;
+  background: url('data:image/svg+xml;charset=UTF-8,%3Csvg%20width%3D%2210%22%20height%3D%226%22%20viewBox%3D%220%200%2010%206%22%20fill%3D%22none%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Cpath%20d%3D%22M8.20842%200L4.69415%203.78711L1.16719%200L0%201.25781L4.68147%206.5625L9.37562%201.25781L8.20842%200Z%22%20fill%3D%22%232E3749%22/%3E%3C/svg%3E')
+    no-repeat right 1.5rem center; 
+  background-size: 1rem;
+  padding-right: 3.5rem;
+}
+
+</style>
